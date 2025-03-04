@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Badge from "../components/Badge.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <main class="mx-auto p-8">
+  <section class="w-full md:w-[740px]  text-center lg:text-start mx-auto py-40 flex flex-col justify-center lg:justify-start gap-4">
+    <img
+      src="./midudev.webp"
+      alt="Imagen de Biel"
+      class="rounded-full w-12 h-12 object-contain"
+    />
+      <h1 class="text-5xl font-bold  flex sm:justify-center  md:justify-start flex-col gap-y-4 md:flex-row gap-x-4 pb-4">
+        <span class="shrink-0 md:shrink">
+          Hey, Soy Biel Martinez
+        </span>
+         <a href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/" class="flex justify-center items-center shrink ">
+          <Badge>Disponible para trabajar</Badge>
+          </a> 
+      </h1>
+      <h2 class="text-lg text-center lg:text-start opacity-80">
+        Desarrollador Web de Barcelona, España. Especialiazdo en el dessarollo
+        FronEnd responsive de paginas únicas
+      </h2>
+    </section>
+    </main>
 </Layout>
