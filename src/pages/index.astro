@@ -1,5 +1,8 @@
 ---
 import Badge from "../components/Badge.astro";
+import Linkedin from "../components/icons/LinkedinIcon.astro";
+import Github from "../components/icons/GithubIcon.astro";
+import Socialpill from "../components/Socialpill.astro";
 import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -8,24 +11,61 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <main class="mx-auto p-8">
-  <section class="w-full md:w-[740px]  text-center lg:text-start mx-auto py-40 flex flex-col justify-center lg:justify-start gap-4">
-    <img
-      src="./midudev.webp"
-      alt="Imagen de Biel"
-      class="rounded-full w-12 h-12 object-contain"
-    />
-      <h1 class="text-5xl font-bold  flex sm:justify-center  md:justify-start flex-col gap-y-4 md:flex-row gap-x-4 pb-4">
-        <span class="shrink-0 md:shrink">
-          Hey, Soy Biel Martinez
-        </span>
-         <a href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/" class="flex justify-center items-center shrink ">
+    <section
+      class="w-full md:w-[740px] text-center lg:text-start mx-auto py-40 flex flex-col justify-center lg:justify-start gap-4"
+    >
+      <img
+        src="./midudev.webp"
+        alt="Imagen de Biel"
+        class="rounded-full w-12 h-12 object-contain"
+      />
+      <h1
+        class="text-5xl font-bold flex sm:justify-center md:justify-start flex-col gap-y-4 md:flex-row gap-x-4 pb-4"
+      >
+        <span class="shrink-0 md:shrink"> Hey, Soy Biel Martinez </span>
+        <a
+          href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
+          class="flex justify-center items-center shrink"
+        >
           <Badge>Disponible para trabajar</Badge>
-          </a> 
+        </a>
       </h1>
-      <h2 class="text-lg text-center lg:text-start opacity-80">
-        Desarrollador Web de Barcelona, España. Especialiazdo en el dessarollo
-        FronEnd responsive de paginas únicas
+      <h2 class="text-xl text-center lg:text-start opacity-85">
+        <span class="font-bold text-amber-300 opacity-100"
+          >Desarrollador Web</span
+        > de Barcelona, España. Especializado en el diseño y desarrollo de interfaces
+        de usuario modernas, intuitivas y completamente responsivas. Con una <span
+          class="font-bold text-amber-300/100"
+          >mentalidad orientada a la resolución de problemas y un enfoque
+          colaborativo</span
+        > .
+        <span class="block opacity-80"
+          >Siempre dispuesto a enfrentar nuevos retos y seguir aprendiendo.</span
+        >
       </h2>
+
+      <ul class="flex gap-6">
+        <li>
+          <Socialpill
+            href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
+          >
+            Linkedin
+            <Linkedin class="w-5 h-5" />
+          </Socialpill>
+        </li>
+        <li>
+          <Socialpill href="https://github.com/bielmc11">
+            Github
+            <Github class="w-5 h-5" />
+          </Socialpill>
+        </li>
+        <li>
+          <a href="/" class="flex gap-1 items-center">
+            Linkedin
+            <Linkedin class="w-5 h-5" />
+          </a>
+        </li>
+      </ul>
     </section>
-    </main>
+  </main>
 </Layout>
