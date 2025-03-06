@@ -1,0 +1,36 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+const EXPERIENCE = [
+    {
+        date: "February 2022",
+        title: "Application UI code in Tailwind CSS",
+        description: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        link: "https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
+    },
+    {
+        date: "March 2022",
+        title: "Marketing UI design in Figma",
+        description: "All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.",
+        link: "https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
+    },
+    
+    
+]
+---
+<ol class="relative border-s border-gray-200 dark:border-gray-700">     
+    {
+        EXPERIENCE.map((exp) => (
+          <ExperienceItem {...exp} />
+        ))
+    }             
+    
+    <li class="mb-10 ms-4">
+        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 2022</time>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in Figma</h3>
+        <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
+    </li>
+   
+</ol>
+

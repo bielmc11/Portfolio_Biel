@@ -4,20 +4,22 @@ import Linkedin from "../components/icons/LinkedinIcon.astro";
 import Github from "../components/icons/GithubIcon.astro";
 import Socialpill from "../components/Socialpill.astro";
 import Layout from "../layouts/Layout.astro";
+import MailIcon from "../components/icons/MailIcon.astro";
+import Experience from "../components/Experience.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <main class="mx-auto p-8">
+  <main class="mx-auto p-8 w-full">
     <section
       class="w-full md:w-[740px] text-center lg:text-start mx-auto py-40 flex flex-col justify-center lg:justify-start gap-4"
     >
       <img
         src="./midudev.webp"
         alt="Imagen de Biel"
-        class="rounded-full w-12 h-12 object-contain"
+        class="rounded-full size-12 object-contain"
       />
       <h1
         class="text-5xl font-bold flex sm:justify-center md:justify-start flex-col gap-y-4 md:flex-row gap-x-4 pb-4"
@@ -44,28 +46,38 @@ import Layout from "../layouts/Layout.astro";
         >
       </h2>
 
-      <ul class="flex gap-6">
+      <ul class="flex flex-col sm:flex-row  gap-6 justify-center lg:justify-start">
         <li>
           <Socialpill
             href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
           >
             Linkedin
-            <Linkedin class="w-5 h-5" />
+            <Linkedin class="size-6" />
           </Socialpill>
         </li>
         <li>
           <Socialpill href="https://github.com/bielmc11">
             Github
-            <Github class="w-5 h-5" />
+            <Github class="size-6" />
           </Socialpill>
         </li>
+
         <li>
-          <a href="/" class="flex gap-1 items-center">
-            Linkedin
-            <Linkedin class="w-5 h-5" />
-          </a>
+          <Socialpill href="https://twitter.com/bielmc11">
+            Bielmarticr@gmail.com
+            <MailIcon class="size-6" />
+          </Socialpill>
         </li>
       </ul>
+    </section>
+    <!-- <section>
+      <Experience />
+    </section> -->
+    <section class="mt-60 text-black">
+      <div>
+        Buenas que tal por aqui 
+      </div>
+
     </section>
   </main>
 </Layout>
