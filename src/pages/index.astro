@@ -6,16 +6,13 @@ import Socialpill from "../components/Socialpill.astro";
 import Layout from "../layouts/Layout.astro";
 import MailIcon from "../components/icons/MailIcon.astro";
 import Experience from "../components/Experience.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import SectionCointainer from "../components/SectionCointainer.astro";
+import Briefcase from "../components/icons/Briefcase.astro";
 ---
 
 <Layout>
   <main class="mx-auto p-8 w-full">
-    <section
-      class="w-full md:w-[740px] text-center lg:text-start mx-auto py-40 flex flex-col justify-center lg:justify-start gap-4"
-    >
+    <SectionCointainer id="sobre-mi" class="pt-40 pb-24">
       <img
         src="./midudev.webp"
         alt="Imagen de Biel"
@@ -46,7 +43,9 @@ import Experience from "../components/Experience.astro";
         >
       </h2>
 
-      <ul class="flex flex-col sm:flex-row  gap-6 justify-center lg:justify-start">
+      <ul
+        class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
+      >
         <li>
           <Socialpill
             href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
@@ -69,15 +68,13 @@ import Experience from "../components/Experience.astro";
           </Socialpill>
         </li>
       </ul>
-    </section>
-    <!-- <section>
-      <Experience />
-    </section> -->
-    <section class="mt-60 text-black">
-      <div>
-        Buenas que tal por aqui 
-      </div>
+    </SectionCointainer>
 
-    </section>
+    <SectionCointainer id="experiencia">
+      <h2 class="text-2xl font-semibold mb-6 flex items-center gap-x-3 ">
+        <Briefcase class="size-8" />
+        Experiencia laboral</h2>
+      <Experience />
+    </SectionCointainer>
   </main>
 </Layout>
