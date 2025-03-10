@@ -11,15 +11,16 @@ import Briefcase from "../components/icons/Briefcase.astro";
 ---
 
 <Layout>
-  <main class="mx-auto p-8 w-full">
+  <main class="mx-auto px-6 w-full">
     <SectionCointainer id="sobre-mi" class="pt-40 pb-24">
       <img
+
         src="./midudev.webp"
         alt="Imagen de Biel"
-        class="rounded-full size-12 object-contain"
+        class="rounded-full size-12 object-contain lg:mx-0 mx-auto"
       />
       <h1
-        class="text-5xl font-bold flex sm:justify-center md:justify-start flex-col gap-y-4 md:flex-row gap-x-4 pb-4"
+        class="text-3xl sm:text-4xl  font-bold flex sm:justify-center lg:justify-start flex-col gap-y-4 md:flex-row gap-x-4 pb-4"
       >
         <span class="shrink-0 md:shrink"> Hey, Soy Biel Martinez </span>
         <a
@@ -29,7 +30,7 @@ import Briefcase from "../components/icons/Briefcase.astro";
           <Badge>Disponible para trabajar</Badge>
         </a>
       </h1>
-      <h2 class="text-xl text-center lg:text-start opacity-85">
+      <h2 class="text-xl text-center lg:text-start opacity-85 text-pretty lg:max-w-[600px] ">
         <span class="font-bold text-amber-300 opacity-100"
           >Desarrollador Web</span
         > de Barcelona, España. Especializado en el diseño y desarrollo de interfaces
@@ -46,7 +47,7 @@ import Briefcase from "../components/icons/Briefcase.astro";
       <ul
         class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
       >
-        <li>
+        <li >
           <Socialpill
             href="https://www.linkedin.com/in/biel-mart%C3%ADnez-0a3051271/"
           >
@@ -62,8 +63,8 @@ import Briefcase from "../components/icons/Briefcase.astro";
         </li>
 
         <li>
-          <Socialpill href="https://twitter.com/bielmc11">
-            Bielmarticr@gmail.com
+          <Socialpill href="mailto:bielmarticr@gmail.com">
+            bielmarticr@gmail.com
             <MailIcon class="size-6" />
           </Socialpill>
         </li>
