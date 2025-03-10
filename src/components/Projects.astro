@@ -1,0 +1,34 @@
+---
+import ProjectsItem from "./icons/ProjectsItem.astro"
+
+const PROJECTS = [
+    {
+        title: "Astro Launches",
+        description: "Web created with Astro. In this you will see both the latest launches from the space agency SpaceX and the next ones.",
+        link: "https://launches-x-sage.vercel.app/",
+        github: "https://github.com/bielmc11/LaunchesX",
+        image: "/projects/astroLaunches.webp",
+        tags: ["Next.js", "Tailwind css", "React"]
+
+    },
+    {
+        title: "Project 2",
+        description: "Lorem impsum saidjasd aifjapfja aoiad'jasd aaoipdjha'dj f9ipaifhapsdmadpjj'+0dj a+dmasdomas+odk asdmas+podkas+'0dkadasd",
+        link: "https://www.google.com",
+        github: "https://www.github.com",
+        image: "https://www.google.com",
+        tags: ["react", "next", "tag3"]
+    }
+    
+    
+]
+---
+<section>
+    {
+        PROJECTS.map((project) => (
+            <ProjectsItem {...project} />
+            
+        ))
+    }
+
+</section>

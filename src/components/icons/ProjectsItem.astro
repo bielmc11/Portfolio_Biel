@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  link: string;
+  github: string;
+  image: string;
+  tags: string[];
+}
+const { title, description, link, github, image, tags } = Astro.props;
+---
+
+<article class="grid grid-cols-1 md:grid-cols-7 mb-14 gap-x-6 ">
+    <div class="col-span-1 md:col-span-3">
+        <img src={image} alt={`imagen del proyecto ${title}`} class="rounded-lg shadow-2xl shadow-white/10 " />
+    </div>
+    <div class="md:col-span-4">
+        <h3 class="text-xl text-amber-300 font-semibold text-pretty">{title}</h3>
+        <p class="opacity-80 ">{description}</p>
+
+    </div>
+
+    
+
+</article>
