@@ -1,34 +1,56 @@
 ---
-import ProjectsItem from "./icons/ProjectsItem.astro"
+import Next from "./icons/Next.astro";
+import ProjectsItem from "./icons/ProjectsItem.astro";
+import ReactIcon from "./icons/ReactIcon.astro";
+import Tailwind from "./icons/Tailwind.astro";
 
-const PROJECTS = [
-    {
-        title: "Astro Launches",
-        description: "Web created with Astro. In this you will see both the latest launches from the space agency SpaceX and the next ones.",
-        link: "https://launches-x-sage.vercel.app/",
-        github: "https://github.com/bielmc11/LaunchesX",
-        image: "/projects/astroLaunches.webp",
-        tags: ["Next.js", "Tailwind css", "React"]
-
-    },
-    {
-        title: "Project 2",
-        description: "Lorem impsum saidjasd aifjapfja aoiad'jasd aaoipdjha'dj f9ipaifhapsdmadpjj'+0dj a+dmasdomas+odk asdmas+podkas+'0dkadasd",
-        link: "https://www.google.com",
-        github: "https://www.github.com",
-        image: "https://www.google.com",
-        tags: ["react", "next", "tag3"]
-    }
-    
-    
-]
+const TAGS = {
+  NEXT: {
+    title: "Next.js",
+    class: "bg-slate-700 text-white  ",
+    icon: Next,
+  },
+  TAILWIND: {
+    title: "Tailwind css",
+    class: "bg-blue-600 text-white  ",
+    icon: Tailwind,
+  },
+  REACT: {
+    title: "React",
+    class: "bg-blue-800 text-white",
+    icon: ReactIcon,
+  },
+};
+const PROJECTS: Projects[] = [
+  {
+    title: "Astro Launches",
+    description:
+      "Web created with Astro. In this you will see both the latest launches from the space agency SpaceX and the next ones.",
+    link: "https://launches-x-sage.vercel.app/",
+    github: "https://github.com/bielmc11/LaunchesX",
+    image: "/projects/astroLaunches.webp",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT],
+  },
+  {
+    title: "Project 2",
+    description:
+      "Lorem impsum saidjasd aifjapfja aoiad'jasd aaoipdjha'dj f9ipaifhapsdmadpjj'+0dj a+dmasdomas+odk asdmas+podkas+'0dkadasd",
+    link: "https://www.google.com",
+    github: "https://www.github.com",
+    image: "https://www.google.com",
+    tags: [TAGS.REACT, TAGS.NEXT],
+  },
+];
 ---
-<section>
-    {
-        PROJECTS.map((project) => (
-            <ProjectsItem {...project} />
-            
-        ))
-    }
 
+<!-- <section class="flex flex-col gap-y-16">
+  {PROJECTS.map((project) => <ProjectsItem {...project} />)}
+</section> -->
+<section class="flex flex-col gap-y-16">
+  <!-- TODO: acabar esta parte a ver si puedo renderizar el icono -->
+  {
+    PROJECTS.map(({ link, image, description, github, title, tags }) => (
+      <p>buenos dias</p>
+    ))
+  }
 </section>
