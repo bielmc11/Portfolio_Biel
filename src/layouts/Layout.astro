@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import SectionCointainer from "../components/SectionCointainer.astro";
 import "../styles/global.css";
 import "@fontsource-variable/onest";
 ---
@@ -27,7 +28,11 @@ import "@fontsource-variable/onest";
     <Header />
     <slot />
 
-    <Footer/>
+    <SectionCointainer>
+
+      <Footer/>
+    </SectionCointainer>
+
 
     <style is:global>
       :root {

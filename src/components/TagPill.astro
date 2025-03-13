@@ -1,7 +1,12 @@
 ---
 ---
-<li class="flex items-center gap-x-2 ">
+<!-- <li class="flex items-center justify-center gap-x-2 ">
     <span class={`rounded-lg  text-xs flex font-medium px-2.5 py-0.5  ${Astro.props.class}`}>
         <slot/>
     </span>
+</li> -->
+<li class={`flex items-center justify-center gap-x-2 rounded-full  text-[11px]  font-medium px-2 py-0.5 ${Astro.props.class}`}>
+    
+    <slot/>
 </li>
+

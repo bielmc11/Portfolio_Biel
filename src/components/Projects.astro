@@ -1,24 +1,33 @@
 ---
+import ButtonLink from "./ButtonLink.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import GitIcon from "./icons/GitIcon.astro";
 import Next from "./icons/Next.astro";
-import ProjectsItem from "./icons/ProjectsItem.astro";
+import PreviewIcon from "./icons/PreviewIcon.astro";
 import ReactIcon from "./icons/ReactIcon.astro";
 import Tailwind from "./icons/Tailwind.astro";
+import TagPill from "./TagPill.astro";
 
 const TAGS = {
   NEXT: {
     title: "Next.js",
-    class: "bg-slate-700 text-white  ",
+    class: "bg-black text-white  ",
     icon: Next,
   },
   TAILWIND: {
     title: "Tailwind css",
-    class: "bg-blue-600 text-white  ",
+    class: "bg-[#003159] text-white  ",
     icon: Tailwind,
   },
   REACT: {
     title: "React",
-    class: "bg-blue-800 text-white",
+    class: "bg-[#58C4DC] text-black",
     icon: ReactIcon,
+  },
+  ASTRO: {
+    title: "Astro",
+    class: "bg-orange-300 text-black",
+    icon: AstroIcon,
   },
 };
 const PROJECTS: Projects[] = [
@@ -32,25 +41,69 @@ const PROJECTS: Projects[] = [
     tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT],
   },
   {
-    title: "Project 2",
+    title: "Astro Books",
     description:
-      "Lorem impsum saidjasd aifjapfja aoiad'jasd aaoipdjha'dj f9ipaifhapsdmadpjj'+0dj a+dmasdomas+odk asdmas+podkas+'0dkadasd",
+      "Una web construida con las bases de astro donde podemos ver recomendaciones de libros y sus detalles. En ella podemos ver 'View transitions', islas de servidor e islas de cliente.",
     link: "https://www.google.com",
     github: "https://www.github.com",
     image: "https://www.google.com",
-    tags: [TAGS.REACT, TAGS.NEXT],
+    tags: [TAGS.REACT, TAGS.ASTRO],
   },
 ];
 ---
 
-<!-- <section class="flex flex-col gap-y-16">
-  {PROJECTS.map((project) => <ProjectsItem {...project} />)}
-</section> -->
 <section class="flex flex-col gap-y-16">
-  <!-- TODO: acabar esta parte a ver si puedo renderizar el icono -->
   {
     PROJECTS.map(({ link, image, description, github, title, tags }) => (
-      <p>buenos dias</p>
+      <article class="grid grid-cols-1 md:grid-cols-8 gap-x-6 text-start group">
+        <div class="col-span-1 md:col-span-4 ">
+
+          <div class="relative gap-8 transition duration-500 ease-in-out transform shadow-xl shadow-white/5 overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt={`imagen del proyecto ${title}`}
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={image}
+            />
+          </div>
+        </div>
+
+        <div class="md:col-span-4 flex flex-col gap-y-4">
+          <h3 class="text-xl text-amber-300 font-semibold text-pretty">
+            {title}
+          </h3>
+
+          <ul class="flex gap-x-2">
+            {tags.map((tag) => (
+              <TagPill class={`${tag.class}`}>
+                <tag.icon class="size-4" />
+                {tag.title}
+              </TagPill>
+            ))}
+          </ul>
+          <p class="text-sm opacity-80 text-pretty">{description}</p>
+          <footer class="flex flex-row gap-x-4 justify-start items-center">
+          {
+            github && (
+              <ButtonLink href={github}>
+                <GitIcon class="size-4" />
+                Code
+              </ButtonLink>
+            )
+          }
+          {
+            link && (
+              <ButtonLink href={link}>
+                <PreviewIcon class="size-4" />
+                Preview
+              </ButtonLink>
+            )
+          }
+
+        </footer>
+        </div>
+       
+      </article>
     ))
   }
 </section>
