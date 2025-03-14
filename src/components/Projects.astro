@@ -32,22 +32,31 @@ const TAGS = {
 };
 const PROJECTS: Projects[] = [
   {
+    title: "Ecomerce",
+    description:
+      "Un e-commerce totalmente funcional,con registro de usuario, proteccion de rutas y pagos mediante Paypal. Back end y front end en Next.js  y base de datos en Supabase.",
+    link: "https://teslo-shop-taupe.vercel.app",
+    github: "https://github.com/bielmc11/Teslo-shop",
+    image: "/projects/e-comerce.webp",
+    tags: [TAGS.NEXT, TAGS.REACT, TAGS.TAILWIND],
+  },
+  {
     title: "Astro Launches",
     description:
       "Web created with Astro. In this you will see both the latest launches from the space agency SpaceX and the next ones.",
     link: "https://launches-x-sage.vercel.app/",
     github: "https://github.com/bielmc11/LaunchesX",
     image: "/projects/astroLaunches.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.REACT],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
   {
     title: "Astro Books",
     description:
       "Una web construida con las bases de astro donde podemos ver recomendaciones de libros y sus detalles. En ella podemos ver 'View transitions', islas de servidor e islas de cliente.",
-    link: "https://www.google.com",
-    github: "https://www.github.com",
-    image: "https://www.google.com",
-    tags: [TAGS.REACT, TAGS.ASTRO],
+    link: "https://astro-books-pi.vercel.app/",
+    github: "https://github.com/bielmc11/Astro-books",
+    image: "/projects/astroBooks.webp",
+    tags: [TAGS.ASTRO, TAGS.REACT],
   },
 ];
 ---
@@ -57,18 +66,17 @@ const PROJECTS: Projects[] = [
     PROJECTS.map(({ link, image, description, github, title, tags }) => (
       <article class="grid grid-cols-1 md:grid-cols-8 gap-x-6 text-start group">
         <div class="col-span-1 md:col-span-4 ">
-
-          <div class="relative gap-8 transition duration-500 ease-in-out transform shadow-xl shadow-white/5 overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+          <div class="relative gap-8 transition duration-500 ease-in-out transform shadow-xl shadow-white/5 overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50 h-full">
             <img
               alt={`imagen del proyecto ${title}`}
-              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              class="object-cover w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
               loading="lazy"
               src={image}
             />
           </div>
         </div>
 
-        <div class="md:col-span-4 flex flex-col gap-y-4">
+        <div class="md:col-span-4 flex flex-col gap-y-4 mt-6 md:mt-0">
           <h3 class="text-xl text-amber-300 font-semibold text-pretty">
             {title}
           </h3>
@@ -83,26 +91,20 @@ const PROJECTS: Projects[] = [
           </ul>
           <p class="text-sm opacity-80 text-pretty">{description}</p>
           <footer class="flex flex-row gap-x-4 justify-start items-center">
-          {
-            github && (
+            {github && (
               <ButtonLink href={github}>
                 <GitIcon class="size-4" />
                 Code
               </ButtonLink>
-            )
-          }
-          {
-            link && (
+            )}
+            {link && (
               <ButtonLink href={link}>
                 <PreviewIcon class="size-4" />
                 Preview
               </ButtonLink>
-            )
-          }
-
-        </footer>
+            )}
+          </footer>
         </div>
-       
       </article>
     ))
   }

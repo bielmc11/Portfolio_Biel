@@ -1,15 +1,46 @@
-<header class="fixed flex mt-2 justify-center py-3 w-full lg:w-[1000px] sm:w-[600px] px-2 sm:px-0 mx-auto">
-
-
-  <nav class="flex justify-center flex-2">
+<header
+  id="header"
+  class="fixed z-10 flex mt-2 justify-center py-2 w-full lg:w-[500px] sm:w-[600px] px-2 sm:px-0 mx-auto rounded-full  "
+>
+  <nav id="jaja" class="flex justify-center flex-2">
     <ul class="flex gap-x-6 sm:gap-x-6 justify-center opacity-80">
-      <li><a href="#top">Home</a></li>
+      <li><a  href="#top">Home</a></li>
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#projectos">Projectos</a></li>
       <li><a href="#contacto">Contaco</a></li>
     </ul>
   </nav>
+</header>
+
+<script>
+  const imagen = document.querySelector(".imagenPerfil") 
+  const header = document.querySelector("#header");
 
   
-</header>
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        header?.classList.add('scroll-down')
+      }else{
+        header?.classList.remove('scroll-down')
+      }
+    });
+  });
+
+  observer.observe(imagen!);
+</script>
+
+<style>
+  .scroll-down {
+    background-color: #1F2837;
+    color: white;
+    border: 0.1px solid white;
+    animation: move 1s ease-in-out;
+
+  }
+
+  
+  
+</style>
