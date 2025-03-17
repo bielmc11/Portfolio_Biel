@@ -28,50 +28,58 @@ const navItems = [
   class="fixed text-sm z-10 flex mt-2 justify-center py-2 w-auto px-2 sm:px-0 mx-auto rounded-full"
 >
   <nav class="flex justify-center flex-2 px-2 sm:px-6 py-1">
-    <ul class="flex gap-x-6 sm:gap-x-4 justify-center opacity-80">
+    <!-- <ul class="flex gap-x-6 sm:gap-x-4 justify-center opacity-80">
       <li><a aria-label="sobre-mi" href="#sobre-mi">Sobre mí</a></li>
       <li><a aria-label="experiencia" href="#experiencia">Experiencia</a></li>
       <li><a aria-label="projectos" href="#projectos">Projectos</a></li>
       <li><a aria-label="contacto" href="#contacto">Contaco</a></li>
+    </ul> -->
+
+    <ul class="flex gap-x-6 sm:gap-x-4 justify-center opacity-80">
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href} aria-label={item.label}>
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
 
-
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const projectos = document.querySelectorAll('#projectos')
-    
-    const navItems = document.querySelectorAll('header nav ul li a')
-    const sections = document.querySelectorAll('section')
+    const navItems = document.querySelectorAll("header nav ul li a");
+    const sections = Array.from(document.querySelectorAll("section"));
+    sections.pop();
 
-    
-    
+    const a = Array.from(sections);
+    a.pop();
+    console.log(a);
 
     const callback = (entries: any[]) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          navItems.forEach(items =>{
-            if(items.getAttribute('aria-label') == entry.target.id){
-              console.log('Teoricamente por aqui sale el id de cada a segun la seccion por la que pase',entry.target.id)
-              items.classList.add('text-blue-500')
-            }else{
-              items.classList.remove('text-blue-500')
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((items) => {
+            if (items.getAttribute("aria-label") == entry.target.id) {
+              items.classList.add("text-blue-500");
+            } else {
+              items.classList.remove("text-blue-500");
             }
-          })
-          
+          });
         }
-      })
+      });
     };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.4,
     });
 
-    sections.forEach(section => observer.observe(section))
+    sections.forEach((section) => observer.observe(section));
   });
 </script>
 

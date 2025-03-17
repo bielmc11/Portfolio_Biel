@@ -61,7 +61,7 @@ const PROJECTS: Projects[] = [
 ];
 ---
 
-<section class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-16">
   {
     PROJECTS.map(({ link, image, description, github, title, tags }) => (
       <article class="grid grid-cols-1 md:grid-cols-8 gap-x-6 text-start group">
@@ -108,4 +108,4 @@ const PROJECTS: Projects[] = [
       </article>
     ))
   }
-</section>
+</div>
