@@ -55,10 +55,6 @@ const navItems = [
     const sections = Array.from(document.querySelectorAll("section"));
     sections.pop();
 
-    const a = Array.from(sections);
-    a.pop();
-    console.log(a);
-
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
