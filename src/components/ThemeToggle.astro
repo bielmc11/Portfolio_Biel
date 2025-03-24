@@ -1,0 +1,138 @@
+---
+import MoonIcon from "./icons/MoonIcon.astro";
+import SunIcon from "./icons/SunIcon.astro";
+import SystemIcon from "./icons/SystemIcon.astro";
+---
+
+<div id="theme-toggle-main" class="relative">
+  <button
+    id="theme-toggle-btn"
+    class="hover:cursor-pointer hover:scale-105 transition">Toggle theme</button
+  >
+
+  <div id='toggle-options' class="relative overflow-hidden">
+    <ul
+      id="theme-togle-container"
+      class="absolute top-5 right-0 text-black overflow-hidden flex-col scale-70 items-center w-[170px] text-xs py-2 gap-y-2 rounded-lg border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out"
+    >
+      <li
+        class="flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+      >
+        <SunIcon class="icon size-5" />
+        Light mode
+      </li>
+      <li
+        class="flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+      >
+        <MoonIcon class="icon size-5" />
+        Dark mode
+      </li>
+      <li
+        class="flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+      >
+        <SystemIcon class="icon size-5" />
+        System preference
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--
+  1- Poner una palabra para clicar
+  2- hacer Una grid o una lista con absolute donde se vean los tres emoticonos
+  3- Hacer en el script que al clickar la lista se vea o se deje de ver añadiendole hidden o grid dependiendo si esta abierta
+
+  4- Guardar la opcion escogida en localStorage
+  5- Cargar el el emoticono donde clicko dependiendo de la opcion guardada o esogida
+  6- Cambiar realmente el color del tema XD
+
+-->
+
+<script is:inline>
+  //Miro la preferencia del tema, si tengo algo en localStorage lo usa, si no lo usa el matchMedia
+  const getThemePreference = () => {
+    console.log("getThemePreference");
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") ?? "system";
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const changeButton = document.getElementById("theme-toggle-btn");
+  const toggleContainer = document.getElementById("theme-togle-container");
+  const toggleMenu = document.getElementById("toggle-options");
+
+  changeButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    toggleContainer.classList.toggle("scale-70");
+
+    toggleMenu.classList.toggle("overflow-hidden");
+    //toggleContainer.classList.toggle("-translate-y-48");
+  });
+</script>
+
+<!-- <script is:inline>
+  let remove = null;
+  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  const themesMenu = document.getElementById("themes-menu");
+
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") ?? "system";
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const updateIcon = (themePreference) => {
+    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
+      element.style.scale = element.id === themePreference ? "1" : "0";
+    });
+  };
+
+  const updateTheme = () => {
+    if (remove != null) {
+      remove();
+    }
+    matchMedia.addEventListener("change", updateTheme);
+    remove = () => {
+      matchMedia.removeEventListener("change", updateTheme);
+    };
+
+    const themePreference = getThemePreference();
+    const isDark =
+      themePreference === "dark" ||
+      (themePreference === "system" && matchMedia.matches);
+
+    updateIcon(themePreference);
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  };
+
+  updateTheme();
+
+  document.addEventListener("click", () => themesMenu.classList.remove("open"));
+
+  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isClosed = !themesMenu.classList.contains("open");
+    themesMenu.classList[isClosed ? "add" : "remove"]("open");
+  });
+
+  document.querySelectorAll(".themes-menu-option").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+      updateTheme();
+    });
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    updateTheme();
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+  });
+</script> -->

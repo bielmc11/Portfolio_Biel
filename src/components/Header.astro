@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
+
 
 const navItems = [
   {
@@ -36,7 +38,7 @@ const navItems = [
       <li><a aria-label="contacto" href="#contacto">Contaco</a></li>
     </ul> -->
 
-    <ul class="flex gap-x-6 sm:gap-x-4 justify-center opacity-80">
+    <ul class="flex items-center gap-x-6 sm:gap-x-4 justify-center opacity-80">
       {
         navItems.map((item) => (
           <li>
@@ -46,6 +48,7 @@ const navItems = [
           </li>
         ))
       }
+      <ThemeToggle/>
     </ul>
   </nav>
 </header>
