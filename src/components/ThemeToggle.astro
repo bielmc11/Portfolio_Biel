@@ -7,31 +7,32 @@ import SystemIcon from "./icons/SystemIcon.astro";
 <div id="theme-toggle-main" class="relative">
   <button
     id="theme-toggle-btn"
-    class="hover:cursor-pointer hover:scale-105 transition">Toggle theme</button
+    class="hover:cursor-pointer hover:scale-105 transition flex items-center"
   >
+    <SunIcon id="light" class="icon size-5 hidden" />
+    <MoonIcon id="dark" class="icon size-5 hidden" />
+    <SystemIcon id="system" class="icon size-5 " />
+  </button>
 
-  <div id='toggle-options' class="relative overflow-hidden">
+  <div id="toggle-options" class="relative overflow-hidden">
     <ul
       id="theme-togle-container"
-      class="absolute top-5 right-0 text-black overflow-hidden flex-col scale-70 items-center w-[170px] text-xs py-2 gap-y-2 rounded-lg border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out"
+      class="absolute top-5 right-0 text-black overflow-hidden flex flex-col pl-2 items-start scale-70 min-w-[100px] text-xs py-4 gap-y-2 rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out opacity-20"
     >
       <li
-        class="flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+        class="option flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
       >
-        <SunIcon class="icon size-5" />
-        Light mode
+        Light
       </li>
       <li
-        class="flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+        class="option flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
       >
-        <MoonIcon class="icon size-5" />
-        Dark mode
+        Dark
       </li>
       <li
-        class="flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+        class="option flex justify-center font-semibold items-center gap-x-2 hover:scale-105 cursor-pointer transition"
       >
-        <SystemIcon class="icon size-5" />
-        System preference
+        System
       </li>
     </ul>
   </div>
@@ -49,37 +50,12 @@ import SystemIcon from "./icons/SystemIcon.astro";
 -->
 
 <script is:inline>
-  //Miro la preferencia del tema, si tengo algo en localStorage lo usa, si no lo usa el matchMedia
-  const getThemePreference = () => {
-    console.log("getThemePreference");
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system";
-    }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-
+  //1-) Miro la preferencia del tema, si tengo algo en localStorage lo usa, si no lo usa el matchMedia
   const changeButton = document.getElementById("theme-toggle-btn");
   const toggleContainer = document.getElementById("theme-togle-container");
   const toggleMenu = document.getElementById("toggle-options");
 
-  changeButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    toggleContainer.classList.toggle("scale-70");
-
-    toggleMenu.classList.toggle("overflow-hidden");
-    //toggleContainer.classList.toggle("-translate-y-48");
-  });
-</script>
-
-<!-- <script is:inline>
-  let remove = null;
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  const themesMenu = document.getElementById("themes-menu");
-
+  //1-) Miro la preferencia que tengo guardada en localStorage
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
       return localStorage.getItem("theme") ?? "system";
@@ -90,49 +66,50 @@ import SystemIcon from "./icons/SystemIcon.astro";
       : "light";
   };
 
-  const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0";
+  const applyPreference = () => {
+    const icons = document.querySelectorAll(".icon");
+    icons.forEach((icon) => {
+      icon.id === getThemePreference()
+        ? icon.classList.remove("hidden")
+        : icon.classList.add("hidden");
     });
-  };
 
-  const updateTheme = () => {
-    if (remove != null) {
-      remove();
-    }
-    matchMedia.addEventListener("change", updateTheme);
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme);
-    };
+    if(getThemePreference() === "dark"){
+      document.documentElement.classList.add("dark");
+    } else if(getThemePreference() === "light"){
+      document.documentElement.classList.remove("dark");
+    }  else{
+      window.matchMedia('prefers-color-scheme: dark').matches ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
+    }  
 
-    const themePreference = getThemePreference();
-    const isDark =
-      themePreference === "dark" ||
-      (themePreference === "system" && matchMedia.matches);
+  }
 
-    updateIcon(themePreference);
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-  };
+  //2-) Cambio el texto del boton segun mi preferencia
+  document.addEventListener("DOMContentLoaded", function () {
+    const options = document.querySelectorAll(".option");
 
-  updateTheme();
+    applyPreference()
 
-  document.addEventListener("click", () => themesMenu.classList.remove("open"));
 
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isClosed = !themesMenu.classList.contains("open");
-    themesMenu.classList[isClosed ? "add" : "remove"]("open");
-  });
+    //3-) Saco el container de la lista de themas
+    changeButton.addEventListener("click", (e) => {
+      e.stopPropagation();
 
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
-      updateTheme();
+      toggleContainer.classList.toggle("scale-70");
+      toggleContainer.classList.toggle("opacity-20");
+      toggleMenu.classList.toggle("overflow-hidden");
+
+    });
+
+    //4-) Cambio el thema Guardar la opcion escogida en localStorage
+    options.forEach((option) => {
+      option.addEventListener("click", (e) => {
+        e.stopPropagation();
+        localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+
+        applyPreference()
+
+      });
     });
   });
-
-  document.addEventListener("astro:after-swap", () => {
-    updateTheme();
-    window.scrollTo({ left: 0, top: 0, behavior: "instant" });
-  });
-</script> -->
+</script>
