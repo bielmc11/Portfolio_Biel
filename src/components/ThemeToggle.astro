@@ -11,7 +11,7 @@ import SystemIcon from "./icons/SystemIcon.astro";
   >
     <SunIcon id="light" class="icon size-5 hidden" />
     <MoonIcon id="dark" class="icon size-5 hidden" />
-    <SystemIcon id="system" class="icon size-5 " />
+    <SystemIcon id="system" class="icon size-5" />
   </button>
 
   <div id="toggle-options" class="relative overflow-hidden">
@@ -50,6 +50,13 @@ import SystemIcon from "./icons/SystemIcon.astro";
 -->
 
 <script is:inline>
+  let remove = null;
+
+  const handleSystemListener = (theme) => {
+    if (remove) {
+      remove();
+    }
+  };
   //1-) Miro la preferencia del tema, si tengo algo en localStorage lo usa, si no lo usa el matchMedia
   const changeButton = document.getElementById("theme-toggle-btn");
   const toggleContainer = document.getElementById("theme-togle-container");
@@ -68,28 +75,29 @@ import SystemIcon from "./icons/SystemIcon.astro";
 
   const applyPreference = () => {
     const icons = document.querySelectorAll(".icon");
+    const theme = getThemePreference();
     icons.forEach((icon) => {
-      icon.id === getThemePreference()
+      icon.id === theme
         ? icon.classList.remove("hidden")
         : icon.classList.add("hidden");
     });
 
-    if(getThemePreference() === "dark"){
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
-    } else if(getThemePreference() === "light"){
+    } else if (theme === "light") {
       document.documentElement.classList.remove("dark");
-    }  else{
-      window.matchMedia('prefers-color-scheme: dark').matches ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
-    }  
-
-  }
+    } else {
+      window.matchMedia("prefers-color-scheme: dark").matches
+        ? document.documentElement.classList.add("dark")
+        : document.documentElement.classList.remove("dark");
+    }
+  };
 
   //2-) Cambio el texto del boton segun mi preferencia
   document.addEventListener("DOMContentLoaded", function () {
     const options = document.querySelectorAll(".option");
 
-    applyPreference()
-
+    applyPreference();
 
     //3-) Saco el container de la lista de themas
     changeButton.addEventListener("click", (e) => {
@@ -98,7 +106,6 @@ import SystemIcon from "./icons/SystemIcon.astro";
       toggleContainer.classList.toggle("scale-70");
       toggleContainer.classList.toggle("opacity-20");
       toggleMenu.classList.toggle("overflow-hidden");
-
     });
 
     //4-) Cambio el thema Guardar la opcion escogida en localStorage
@@ -107,9 +114,9 @@ import SystemIcon from "./icons/SystemIcon.astro";
         e.stopPropagation();
         localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
 
-        applyPreference()
-
+        applyPreference();
       });
     });
+    remove = () => removeEventListener("click", handleClick);
   });
 </script>
