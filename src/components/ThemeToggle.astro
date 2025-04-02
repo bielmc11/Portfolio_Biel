@@ -14,23 +14,23 @@ import SystemIcon from "./icons/SystemIcon.astro";
     <SystemIcon id="system" class="icon size-5" />
   </button>
 
-  <div id="toggle-options" class="relative overflow-hidden">
+  <div id="toggle-options" class="relative overflow-hidden ">
     <ul
       id="theme-togle-container"
-      class="absolute top-5 right-0 text-black overflow-hidden flex flex-col pl-2 items-start scale-70 min-w-[100px] text-xs py-4 gap-y-2 rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out opacity-20"
+      class="absolute top-5 right-0 text-black overflow-hidden flex flex-col  px-2 items-start scale-70 min-w-[100px] text-xs py-2 gap-y-2 rounded-md border border-gray-100 dark:text-white bg-white/95 dark:bg-gray-900/95 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out opacity-20"
     >
       <li
-        class="option flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+        class="option gap-x-2 font-semibold  cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300  w-full rounded-xs pl-1"
       >
         Light
       </li>
       <li
-        class="option flex justify-center items-center gap-x-2 font-semibold hover:scale-105 cursor-pointer transition"
+        class="option gap-x-2 font-semibold  cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300  w-full rounded-xs pl-1"
       >
         Dark
       </li>
       <li
-        class="option flex justify-center font-semibold items-center gap-x-2 hover:scale-105 cursor-pointer transition"
+        class="option  font-semibold  gap-x-2  cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300  w-full rounded-xs pl-1"
       >
         System
       </li>
@@ -38,16 +38,6 @@ import SystemIcon from "./icons/SystemIcon.astro";
   </div>
 </div>
 
-<!--
-  1- Poner una palabra para clicar
-  2- hacer Una grid o una lista con absolute donde se vean los tres emoticonos
-  3- Hacer en el script que al clickar la lista se vea o se deje de ver añadiendole hidden o grid dependiendo si esta abierta
-
-  4- Guardar la opcion escogida en localStorage
-  5- Cargar el el emoticono donde clicko dependiendo de la opcion guardada o esogida
-  6- Cambiar realmente el color del tema XD
-
--->
 
 <script is:inline>
   let remove = null;

@@ -8,7 +8,8 @@ const { href } = Astro.props;
     target="_blank"
     role="link"
     href={href}
-    class="inline-flex gap-x-2 items-center bg-gray-800 text-white  border border-gray-600 justify-center text-sm rounded-lg px-3 py-2 "
+    class="inline-flex gap-x-2 items-center bg-gray-100 text-gray-800 border-gray-300 dark:bg-gray-800 dark:text-white  border dark:border-gray-600 justify-center text-sm rounded-lg px-3 py-2 hover:bg-gray-800 hover:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-800 transition-all duration-200 ease-in-out"
 >
     <slot/>
+    
 </a>
