@@ -14,23 +14,23 @@ import SystemIcon from "./icons/SystemIcon.astro";
     <SystemIcon id="system" class="icon size-5" />
   </button>
 
-  <div id="toggle-options" class="relative overflow-hidden ">
+  <div id="toggle-options" class="relative overflow-hidden">
     <ul
       id="theme-togle-container"
-      class="absolute top-5 right-0 text-black overflow-hidden flex flex-col  px-2 items-start scale-70 min-w-[100px] text-xs py-2 gap-y-2 rounded-md border border-gray-100 dark:text-white bg-white/95 dark:bg-gray-900/95 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out opacity-20"
+      class="absolute top-5 right-0 text-black overflow-hidden flex flex-col px-2 items-start scale-70 min-w-[100px] text-xs py-2 gap-y-2 rounded-md border border-gray-100 dark:text-white bg-white/95 dark:bg-gray-900/95 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md open transition-all duration-300 ease-in-out opacity-20"
     >
       <li
-        class="option gap-x-2 font-semibold  cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300  w-full rounded-xs pl-1"
+        class="option gap-x-2 font-semibold cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300 w-full rounded-xs pl-1"
       >
         Light
       </li>
       <li
-        class="option gap-x-2 font-semibold  cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300  w-full rounded-xs pl-1"
+        class="option gap-x-2 font-semibold cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300 w-full rounded-xs pl-1"
       >
         Dark
       </li>
       <li
-        class="option  font-semibold  gap-x-2  cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300  w-full rounded-xs pl-1"
+        class="option font-semibold gap-x-2 cursor-pointer transition py-0.5 dark:hover:bg-gray-700 hover:bg-gray-300 w-full rounded-xs pl-1"
       >
         System
       </li>
@@ -38,15 +38,7 @@ import SystemIcon from "./icons/SystemIcon.astro";
   </div>
 </div>
 
-
 <script is:inline>
-  let remove = null;
-
-  const handleSystemListener = (theme) => {
-    if (remove) {
-      remove();
-    }
-  };
   //1-) Miro la preferencia del tema, si tengo algo en localStorage lo usa, si no lo usa el matchMedia
   const changeButton = document.getElementById("theme-toggle-btn");
   const toggleContainer = document.getElementById("theme-togle-container");
@@ -91,22 +83,27 @@ import SystemIcon from "./icons/SystemIcon.astro";
 
     //3-) Saco el container de la lista de themas
     changeButton.addEventListener("click", (e) => {
-      e.stopPropagation();
-
       toggleContainer.classList.toggle("scale-70");
       toggleContainer.classList.toggle("opacity-20");
       toggleMenu.classList.toggle("overflow-hidden");
     });
 
+    document.addEventListener("click", (event) => {
+      
+      if (!changeButton.contains(event.target)) {
+        toggleContainer.classList.toggle("scale-70");
+        toggleContainer.classList.toggle("opacity-20");
+        toggleMenu.classList.toggle("overflow-hidden");
+      }
+    });
+
     //4-) Cambio el thema Guardar la opcion escogida en localStorage
     options.forEach((option) => {
       option.addEventListener("click", (e) => {
-        e.stopPropagation();
         localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
 
         applyPreference();
       });
     });
-    remove = () => removeEventListener("click", handleClick);
   });
 </script>
