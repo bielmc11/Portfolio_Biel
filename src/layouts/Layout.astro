@@ -22,17 +22,15 @@ import "@fontsource-variable/onest";
 
   <body class="relative">
     <div
-      class="fixed top-0 bottom-0 z-[-2] min-h-screen w-full bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]  dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="fixed top-0 bottom-0 z-[-2] min-h-screen w-full bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-gray-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
     >
     </div>
     <Header />
     <slot />
 
     <SectionCointainer>
-
-      <Footer/>
+      <Footer />
     </SectionCointainer>
-
 
     <style is:global>
       :root {
@@ -53,9 +51,8 @@ import "@fontsource-variable/onest";
         color: white;
       }
 
-
-      @media(prefers-reduced-motion: reduce) {
-        html{
+      @media (prefers-reduced-motion: reduce) {
+        html {
           scroll-behavior: auto;
         }
       }
