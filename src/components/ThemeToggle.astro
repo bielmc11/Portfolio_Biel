@@ -43,6 +43,7 @@ import SystemIcon from "./icons/SystemIcon.astro";
   const changeButton = document.getElementById("theme-toggle-btn");
   const toggleContainer = document.getElementById("theme-togle-container");
   const toggleMenu = document.getElementById("toggle-options");
+  console.log(toggleMenu)
 
   //1-) Miro la preferencia que tengo guardada en localStorage
   const getThemePreference = () => {
@@ -83,17 +84,17 @@ import SystemIcon from "./icons/SystemIcon.astro";
 
     //3-) Saco el container de la lista de themas
     changeButton.addEventListener("click", (e) => {
-      toggleContainer.classList.toggle("scale-70");
-      toggleContainer.classList.toggle("opacity-20");
+       toggleContainer.classList.toggle("scale-70");
+      toggleContainer.classList.toggle("opacity-20");  
       toggleMenu.classList.toggle("overflow-hidden");
     });
 
     document.addEventListener("click", (event) => {
       
       if (!changeButton.contains(event.target)) {
-        toggleContainer.classList.toggle("scale-70");
-        toggleContainer.classList.toggle("opacity-20");
-        toggleMenu.classList.toggle("overflow-hidden");
+        toggleContainer.classList.add("scale-70");
+        toggleContainer.classList.add("opacity-20");
+        toggleMenu.classList.add("overflow-hidden");
       }
     });
 

@@ -66,14 +66,16 @@ const PROJECTS: Projects[] = [
     PROJECTS.map(({ link, image, description, github, title, tags }) => (
       <article class="grid grid-cols-1 md:grid-cols-8 gap-x-6 text-start group">
         <div class="col-span-1 md:col-span-4 ">
-          <div class="relative gap-8 transition duration-500 ease-in-out transform shadow-xl shadow-white/5 overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50 h-full">
-            <img
-              alt={`imagen del proyecto ${title}`}
-              class="object-cover w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-              loading="lazy"
-              src={image}
-            />
-          </div>
+          <a href={link} target="_blank">
+            <div class="relative gap-8 transition duration-500 ease-in-out transform shadow-xl shadow-white/5 overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50 h-full">
+              <img
+                alt={`imagen del proyecto ${title}`}
+                class="object-cover w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                loading="lazy"
+                src={image}
+              />
+            </div>
+          </a>
         </div>
 
         <div class="md:col-span-4 flex flex-col gap-y-4 mt-6 md:mt-0">
