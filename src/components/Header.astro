@@ -1,7 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 
-
 const navItems = [
   {
     title: "Experiencie",
@@ -31,17 +30,19 @@ const navItems = [
   class="fixed text-xs z-10 flex mt-2 justify-center py-2 w-auto px-2 sm:px-0 mx-auto rounded-full"
 >
   <nav class="flex justify-center flex-2 px-2 sm:px-6 py-1 font-semibold">
-    <ul class="flex items-center gap-x-6 sm:gap-x-4 justify-center opacity-80 text-gray-800 dark:text-white">
+    <ul
+      class="flex items-center gap-x-6 sm:gap-x-4 justify-center opacity-80 text-gray-800 dark:text-white"
+    >
       {
         navItems.map((item) => (
-          <li>
+          <li class="hover:text-blue-600 transition">
             <a href={item.href} aria-label={item.label}>
               {item.title}
             </a>
           </li>
         ))
       }
-      <ThemeToggle/>
+      <ThemeToggle />
     </ul>
   </nav>
 </header>
@@ -82,23 +83,16 @@ const navItems = [
         sections.forEach((section) => observer.observe(section));
       }
     };
-
-   
   });
-
-  
 </script>
 
-
 <style>
-  :root{
-    --bg-color:white
+  :root {
+    --bg-color: white;
   }
-  :root.dark{
-    --bg-color:rgba(30, 40, 55)
+  :root.dark {
+    --bg-color: rgba(30, 40, 55);
   }
-
-
 
   nav {
     animation: nav-shadown 1s linear both;
@@ -108,28 +102,20 @@ const navItems = [
   }
 
   nav {
-    /* @apply dark:bg-gray-800/90 bg-white/50;
-    background-color: white; */
     background-color: transparent;
-    
   }
 
   @keyframes nav-shadown {
     0% {
-      /* @apply dark:bg-gray-800/0 bg-white/0; */
-      /*  background-color: white */
       background-color: transparent;
     }
     to {
-      /* @apply shadow-lg ring-1 backdrop-blur ring-white/10; */
-
       -webkit-box-shadow: 0px 0px 52px -11px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: 0px 0px 52px -11px rgba(0, 0, 0, 0.75);
       box-shadow: 0px 0px 52px -11px rgba(0, 0, 0, 0.75);
 
       background-color: var(--bg-color);
 
-      /* Inner ring */
       -webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
       -moz-box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
       box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
